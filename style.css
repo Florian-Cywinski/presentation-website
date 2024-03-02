@@ -6,6 +6,11 @@
   --animate-speed: 2s;
 }
 
+/* Another alternative to implement smooth scrolling */
+/* html {
+  scroll-behavior: smooth;
+} */
+
 body {  /* To set the default for body */
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
@@ -62,4 +67,28 @@ body {  /* To set the default for body */
 .btn-dark:hover {
   background: #f4f4f4;
   color: #333;
+}
+
+/* Page Animation (just for page 1) */
+#page-1 h1 {
+  transform: translateY(-1200px); /* To move the h1 up by 1200px */
+  animation: heading var(--animate-speed) forwards ease-in; /* heading is the name of the anim.; var(--animate-speed) is the duration of the anim.; forwards to come down and stay there; ease-in... */
+}
+
+#page-1 p {
+  transform: translateX(-2000px); /* To move the p to the right by 2000px */
+  animation: text var(--animate-speed) forwards ease-in 1s; /* text is the name of the anim.; var(--animate-speed) is the duration of the anim.; forwards to come down and stay there; ease-in...; 1s is the delay time to start thr anim. */
+}
+
+/* Keyframes - to run the animations */
+@keyframes heading {  /* heading is the name of the animation (look at #page-1 h1) */
+  to {
+    transform: translateY(0); /* To bring #page-1 h1 in its final position (to slide into the viewport) */
+  }
+}
+
+@keyframes text { /* text is the name of the animation (look at #page-1 p) */
+  to {
+    transform: translateX(0); /* To bring #page-1 p in its final position (to slide into the viewport) */
+  }
 }

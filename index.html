@@ -58,5 +58,56 @@
       </a>
     </div>
   </section>
+
+  <!-- The following script is from https://releases.jquery.com/ (cdn (content delivery network)) (minified version) to bring in jquery for the Smooth Scrolling part 
+  jQuery is a free JavaScript library that provides functions for DOM navigation and manipulation -->
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+  <script>
+    // Smooth Scrolling (to don't jump directly to the part of the homepage (next slide / vh) after click on this specific button (e.g. "Next Page" button)) - a jquery solution
+    $('.btn').on('click', function(event) { // $('.btn') to grab the button - .on('click' when click any button
+        if (this.hash !== '') { // When any link of a button was clicked (# = id - e.g. id="page-2")
+          event.preventDefault();
+          const hash = this.hash; // To grab the hash (id) of the clicked link (id="page-2"...)
+          $('html, body').animate(  // Selects the html / body to animate this
+            {
+              scrollTop: $(hash).offset().top
+            },
+            800  // The duration of this animation
+          );
+        }
+      });
+  </script>
+
+  <!-- Another method to implement Smooth Scrolling without using jQuery by Will Adams -->
+  <!-- <script>
+    const buttons = document.querySelectorAll(".btn");
+
+    buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+    const hash = event.currentTarget.hash;
+    if (hash !== "") {
+    event.preventDefault();
+    const targetElement = document.querySelector(hash);
+    const offsetTop = targetElement.offsetTop;
+
+    window.scrollTo({
+    top: offsetTop,
+    behavior: "smooth",
+    });
+    }
+    });
+    });
+  </script> -->
+
+  <!-- <style>
+    /* Another alternative to implement smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style> -->
 </body>
 </html>
